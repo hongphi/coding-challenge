@@ -16,7 +16,7 @@ class User(db.Document):
     email = db.EmailField(required=True, unique=True)
     password = db.StringField(required=True, min_length=6)
     name = db.StringField(required=True)
-    age = db.IntField(required=True)
+    age = db.IntField(required=True, min_value=1, max_value=100)
     gender = db.StringField(max_length=1, choices=GENDER_CHOICES, required=True)
     image = mongo.URLField()
 
@@ -29,4 +29,4 @@ class User(db.Document):
         return check_password_hash(self.password, password)
 
 
-RegisterForm = model_form(User, exclude=['password', 'image'])
+RegisterForm = model_form(User, exclude=['image'])

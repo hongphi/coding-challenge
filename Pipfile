@@ -15,6 +15,7 @@ python-dotenv = "*"
 wtforms = "*"
 flask-wtf = "*"
 flask-mail = "*"
+flask-cors = "*"
 
 [requires]
 python_version = "3.8"

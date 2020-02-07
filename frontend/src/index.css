@@ -1,13 +1,147 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.login-bg {
+    background: url("/static/login-bg.jpg") no-repeat;
+    background-size: cover;
+    flex: 1 1 20%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.cus_input {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    padding-left: 0 !important;
+    border-radius: 0 !important;
+
+}
+.navbar {
+    border-bottom: 1px solid #eee;
+}
+.font-s {
+    font-size: 1rem !important;
+}
+.sidebar {
+    top: 57px !important;
+    background-color: #fff !important;
+}
+.nav-text {
+    color: #758498 !important;
+}
+.cus_input:focus {
+    box-shadow: none !important;
+}
+.invalid-feedback {
+    display: block !important;
+}
+.sidenav---sidenav---_2tBP {
+    background-color: #fff;
+}
+.icon {
+    margin-right: 5px;
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+}
+.icon-logout {
+    background: url("/static/icons/logout@2x.png") no-repeat;
+    background-size: contain;
+}
+.icon-dashboard {
+    background: url("/static/icons/dashboard@2x.png") no-repeat;
+    background-size: contain;
+}
+.icon-enquiries {
+    background: url("/static/icons/incoming-enq@2x.png") no-repeat;
+    background-size: contain;
+}
+.icon-quotations {
+    background: url("/static/icons/incoming-qout@2x.png") no-repeat;
+    background-size: contain;
+}
+.icon-product {
+    background: url("/static/icons/product@2x.png") no-repeat;
+    background-size: contain;
+}
+.icon-request {
+    background: url("/static/icons/my-request@2x.png") no-repeat;
+    background-size: contain;
+}
+.icon-order {
+    background: url("/static/icons/order@2x.png") no-repeat;
+    background-size: contain;
+}
+.icon-profile {
+    background: url("/static/icons/profile@2x.png") no-repeat;
+    background-size: contain;
+}
+.icon-settings {
+    background: url("/static/icons/setting@2x.png") no-repeat;
+    background-size: contain;
+}
+.nav-item:hover .icon-logout {
+    background: url("/static/icons/active/logout@2x.png") no-repeat;
+    background-size: contain;
+}
+.nav-item:hover .nav-link {
+    color: #19a3fa !important;
+}
+.nav-item:hover .icon-dashboard, .sidenav---selected---1EK3y .icon-dashboard {
+    background: url("/static/icons/active/dashboard@2x.png") no-repeat;
+    background-size: contain;
+}
+.nav-item:hover .icon-enquiries, .sidenav---selected---1EK3y .icon-enquiries {
+    background: url("/static/icons/active/incoming-enq@2x.png") no-repeat;
+    background-size: contain;
+}
+.nav-item:hover .icon-quotations, .sidenav---selected---1EK3y .icon-quotations {
+    background: url("/static/icons/active/incoming-qout@2x.png") no-repeat;
+    background-size: contain;
+}
+.nav-item:hover .icon-product, .sidenav---selected---1EK3y .icon-product {
+    background: url("/static/icons/active/product@2x.png") no-repeat;
+    background-size: contain;
+}
+.nav-item:hover .icon-request, .sidenav---selected---1EK3y  {
+    background: url("/static/icons/active/my-request@2x.png") no-repeat;
+    background-size: contain;
+}
+.nav-item:hover .icon-order, .sidenav---selected---1EK3y .icon-order {
+    background: url("/static/icons/active/order@2x.png") no-repeat;
+    background-size: contain;
+}
+.nav-item:hover .icon-profile, .sidenav---selected---1EK3y .icon-profile {
+    background: url("/static/icons/active/profile@2x.png") no-repeat;
+    background-size: contain;
+}
+.nav-item:hover .icon-settings, .sidenav---selected---1EK3y .icon-settings {
+    background: url("/static/icons/active/setting@2x.png") no-repeat;
+    background-size: contain;
+}
+.nav-item:hover .sidenav---navtext---1AE_f, .sidenav---selected---1EK3y .sidenav---navtext---1AE_f {
+    color: #19a3fa !important;
+}
+.nav-item .sidenav---navtext---1AE_f {
+    color: #333 !important;
+}
+.sidenav---selected---1EK3y {
+    background: transparent !important;
+}
+.sidenav---highlighted---oUx9u .nav-item.sidenav---navitem---9uL5T:after {
+    background: transparent !important;
+}
+.sidebar.sidenav---sidenav---_2tBP {
+    border-right: 1px solid #eee;
+}
+main {
+    background-color: #fafbfd;
+    margin-left: 240px;
+    padding: 20px;
+    height: calc(100vh - 57px);
+}
+.home {
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 1px 0px 3px 0px rgba(0,0,0,0.43);
+}
+.sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL {
+    min-width: 240px;
 }
