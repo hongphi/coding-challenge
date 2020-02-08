@@ -3,6 +3,11 @@
     background-size: cover;
     flex: 1 1 20%;
 }
+.register-bg {
+    background: url("/static/register-bg.jpg") no-repeat;
+    background-size: cover;
+    flex: 1 1 20%;
+}
 
 .cus_input {
     border-top: none !important;

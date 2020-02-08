@@ -6,23 +6,29 @@ import axios from "axios";
 import {requestURL} from "../helpers/common";
 import {authStore} from "../stores/auth";
 
-export var Register = createReactClass({
-    getInitialState: function () {
-        return {
+export class Register extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             name: "",
             email: "",
             password: "",
             gender: "",
             age: '',
-            errors: {}
+            errors: {},
+            loading: false
         }
-    },
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
     componentDidMount() {
         if (authStore.token) {
             this.props.history.replace("/")
         }
-    },
+    }
+
     handleSubmit(event) {
+        event.preventDefault();
         let url = requestURL('/sign-up');
         let data = {
             name: this.state.name,
@@ -32,23 +38,25 @@ export var Register = createReactClass({
             age: this.state.age
         }
         let that = this;
+        this.setState({loading: true});
         axios.post(url, data).then((res) => {
+            this.setState({loading: false});
             localStorage.setItem("token", res.data.access_token)
             authStore.user = res.data.user;
-            authStore.token = res.data.access_token;
+            authStore.set_token(res.data.access_token);
             that.props.history.replace('/')
         }).catch((error) => {
             if (error.response) {
-                this.setState({errors: error.response.data})
+                this.setState({errors: error.response.data, loading: false})
             }
         })
-        event.preventDefault();
-    },
+    }
+
     render() {
         let gender_options = [{value: 0, text: 'Female'}, {value: 1, text: 'Male'}]
         return (
             <div className="d-flex" style={{minHeight: '100vh'}}>
-                <div className={classNames({"login-bg": true, "col-7": true})}></div>
+                <div className={classNames({"register-bg": true, "col-7": true})}></div>
                 <div className="col-5 d-flex justify-content-center h-100">
                     <div className="h-100" style={{marginTop: '50px', width: '70%'}}>
                         <a href="/"><img src="/static/logo@2x.jpg" style={{height: '30px'}}/></a>
@@ -101,7 +109,7 @@ export var Register = createReactClass({
                                                placeholder="Age in number"/>
                                         {this.state.errors.age != undefined && <div className="invalid-feedback">{this.state.errors.age.join(', ')}</div>}
                                     </div>
-                                    <button type="submit" className="btn btn-primary mb-4" style={{width: '60%', padding: ".6rem .75rem"}}>REGISTER</button>
+                                    <button type="submit" className="btn btn-primary mb-4" disabled={this.state.loading} style={{width: '60%', padding: ".6rem .75rem"}}>REGISTER</button>
                                 </form>
                             </div>
                         </div>
@@ -110,4 +118,4 @@ export var Register = createReactClass({
             </div>
         );
     }
-})
+}
