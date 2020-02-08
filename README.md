@@ -1,6 +1,6 @@
 
 Setup backend:
-- At root the project folder, run **pipenv install**
+- At root project, run **pipenv install**
 - Setup environments:
   To set this value mac/linux can run the command:
     **export ENV_FILE_LOCATION=./.env**
