@@ -51,12 +51,12 @@ export var Register = createReactClass({
                 <div className={classNames({"login-bg": true, "col-7": true})}></div>
                 <div className="col-5 d-flex justify-content-center h-100">
                     <div className="h-100" style={{marginTop: '50px', width: '70%'}}>
-                        <img src="/static/logo@2x.jpg" style={{height: '30px'}}/>
+                        <a href="/"><img src="/static/logo@2x.jpg" style={{height: '30px'}}/></a>
 
                         <div className="d-flex flex-column h-100" style={{marginTop: '20%'}}>
                             <div className="">
                                 <h2>Login</h2>
-                                <p style={{fontSize: '150%'}}>Already have an account? <a href="/login">LogIn</a></p>
+                                <p style={{fontSize: '120%'}}>Already have an account? <a href="/login">LogIn</a></p>
 
                                 <form onSubmit={this.handleSubmit}>
                                     <div className="form-group">
@@ -101,7 +101,7 @@ export var Register = createReactClass({
                                                placeholder="Age in number"/>
                                         {this.state.errors.age != undefined && <div className="invalid-feedback">{this.state.errors.age.join(', ')}</div>}
                                     </div>
-                                    <button type="submit" className="btn btn-primary" style={{width: '60%', padding: ".6rem .75rem"}}>REGISTER</button>
+                                    <button type="submit" className="btn btn-primary mb-4" style={{width: '60%', padding: ".6rem .75rem"}}>REGISTER</button>
                                 </form>
                             </div>
                         </div>

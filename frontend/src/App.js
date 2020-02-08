@@ -4,6 +4,7 @@ import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/rea
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import {Profile} from "./components/Profile";
 import {Route} from "react-router";
+import {authStore} from "./stores/auth";
 
 @inject('routing')
 @observer
@@ -14,7 +15,7 @@ class App extends Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand" href="#">
+                    <a className="navbar-brand" href="/">
                         <img src="/static/logo@2x.jpg" style={{height: '20px'}}/>
                     </a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -24,7 +25,7 @@ class App extends Component {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <a className="nav-link" href="#" tabIndex="-1" aria-disabled="true">
+                                <a href="javascript:void(0)" className="nav-link" href="/logout" tabIndex="-1" aria-disabled="true">
                                     <i className="icon icon-logout"></i> Logout
                                 </a>
                             </li>
@@ -109,7 +110,7 @@ class App extends Component {
                 </SideNav>
 
                 <main>
-                    <Route path="/dashboard" exact component={props => <Profile />} />
+                    <Route path="/" exact component={props => <Profile />} />
                     <Route path="/profile" exact component={props => <Profile />} />
                 </main>
             </div>

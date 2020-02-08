@@ -5,46 +5,55 @@ import createReactClass from "create-react-class"
 import {authStore} from "../stores/auth";
 import {requestURL} from "../helpers/common";
 import axios from "axios";
+import {observer} from "mobx-react";
 
-export var Login = createReactClass({
-    getInitialState: function () {
-        return {
+export class Login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             email: "",
             password: "",
-            error: ""
+            error: "",
+            loading: false
         }
-    },
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
     componentDidMount() {
         if (authStore.token) {
             this.props.history.replace("/")
         }
-    },
+    }
+
     handleSubmit(event) {
-        let url = requestURL('/login')
+        event.preventDefault();
+        let url = requestURL('/login');
+        this.setState({loading: true});
         axios.post(url, {email: this.state.email, password: this.state.password}).then((res) => {
-            debugger
-            localStorage.setItem('token', res.data.access_token)
-            authStore.token = res.data.access_token;
+            this.setState({loading: false});
+            localStorage.setItem('token', res.data.token)
+            authStore.set_token(res.data.token)
+            authStore.set_user(res.data.user);
             this.props.history.replace("/")
         }).catch(error => {
+            this.setState({loading: false});
             if(error.response) {
                 this.setState({error: error.response.data.error})
             }
         })
-        event.preventDefault();
-    },
+    }
+
     render() {
         return (
             <div className="d-flex" style={{minHeight: '100vh'}}>
                 <div className={classNames({"login-bg": true, "col-7": true})}></div>
                 <div className="col-5 d-flex justify-content-center h-100">
                     <div className="h-100" style={{marginTop: '50px', width: '70%'}}>
-                        <img src="/static/logo@2x.jpg" style={{height: '30px'}}/>
+                        <a href="/"><img src="/static/logo@2x.jpg" style={{height: '30px'}}/></a>
 
-                        <div className="d-flex flex-column h-100" style={{marginTop: '40%'}}>
+                        <div className="d-flex flex-column h-100" style={{marginTop: '30%'}}>
                             <div className="">
                                 <h2>Login</h2>
-                                <p style={{fontSize: '150%'}}>Don't have account yet? <a href="/register">Sign Up</a></p>
+                                <p style={{fontSize: '120%'}}>Don't have account yet? <a href="/register">Sign Up</a></p>
 
                                 <form onSubmit={this.handleSubmit}>
                                     {this.state.error != "" && <div className="form-group">
@@ -65,9 +74,9 @@ export var Login = createReactClass({
                                                placeholder="Enter your password"/>
                                     </div>
                                     <div className="form-group">
-                                    <a href="/forget-password" className="font-s">Forget Password</a>
+                                    <a href="/forgot-password" className="font-s">Forget Password</a>
                                     </div>
-                                    <button type="submit" className="btn btn-primary" style={{width: '60%', padding: ".6rem .75rem"}}>LOGIN</button>
+                                    <button type="submit" className="btn btn-primary" disabled={this.state.loading} style={{width: '60%', padding: ".6rem .75rem"}}>LOGIN</button>
                                 </form>
                             </div>
                         </div>
@@ -76,4 +85,4 @@ export var Login = createReactClass({
             </div>
         );
     }
-})
+}

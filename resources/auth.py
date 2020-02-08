@@ -1,9 +1,10 @@
 import datetime
 import json
 
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, decode_token
 from flask_restful import Resource
-from flask import request, Response
+from flask import request, Response, render_template
+from jwt import ExpiredSignatureError
 from mongoengine import DoesNotExist
 from werkzeug.datastructures import MultiDict
 
@@ -28,9 +29,6 @@ class SignupApi(Resource):
         else:
             return form.errors, 400
 
-    def get(self):
-        return "AAAA", 200
-
 
 class LoginApi(Resource):
     def post(self):
@@ -43,7 +41,16 @@ class LoginApi(Resource):
 
             expires = datetime.timedelta(minutes=20)
             access_token = create_access_token(identity=str(user.id), expires_delta=expires)
-            return {'token': access_token}, 200
+            return {'token': access_token, "user": json.loads(user.to_json())}, 200
         except DoesNotExist:
             return {'error': 'Email or password invalid'}, 401
+
+
+class MeApi(Resource):
+    @jwt_required
+    def get(self):
+        user_id = get_jwt_identity()
+        user = User.objects.get(id=user_id)
+        return {"user": json.loads(user.to_json()),}, 200
+
 

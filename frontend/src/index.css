@@ -28,7 +28,7 @@
 .cus_input:focus {
     box-shadow: none !important;
 }
-.invalid-feedback {
+.invalid-feedback, .valid-feedback {
     display: block !important;
 }
 .sidenav---sidenav---_2tBP {
@@ -115,7 +115,7 @@
     background: url("/static/icons/active/setting@2x.png") no-repeat;
     background-size: contain;
 }
-.nav-item:hover .sidenav---navtext---1AE_f, .sidenav---selected---1EK3y .sidenav---navtext---1AE_f {
+.nav-item:hover .sidenav---navtext---1AE_f, .sidenav---selected---1EK3y .nav-item .sidenav---navtext---1AE_f {
     color: #19a3fa !important;
 }
 .nav-item .sidenav---navtext---1AE_f {
@@ -144,4 +144,32 @@ main {
 }
 .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL {
     min-width: 240px;
+}
+.box-profile {
+    background-color: #f2f5fa;
+    width: 300px;
+    padding: 30px;
+}
+.avatar {
+    height: 80px;
+    border-radius: 50%;
+    top: -40px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.profile-details {
+    list-style: none;
+    left: 20%;
+}
+
+.profile-details .field_name {
+    color: #000;
+}
+.profile-details li {
+    margin-bottom: 10px;
+}
+.profile-details .field_value {
+    color: #a2aebe;
+    font-size: 90%;
 }
