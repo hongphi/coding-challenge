@@ -1,3 +1,4 @@
+
 Setup backend:
 - At root the project folder, run **pipenv install**
 - Setup environments:
@@ -6,6 +7,10 @@ export ENV_FILE_LOCATION=./.env
 and windows user can run the command:
 set ENV_FILE_LOCATION=./.env
 - Start server run **python run.py**
+
+Setup database:
+- Please download mongodb server at <https://www.mongodb.com/download-center/community>
+- Start as a local server
 
 Setup frontend:
 - At root project run **cd frontend**
